@@ -376,6 +376,7 @@ ORDER BY RowNumber;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>=CStr(Fields!QueryNumber.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Sum(Fields!Total_CPU.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -662,6 +663,7 @@ ORDER BY RowNumber;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Runtime_Aggs</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "CPU (ms): No data available.", "Bar chart of CPU (ms). X-axis: Query Number. Y-axis: CPU (ms).")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!CPUDescRowNumber.Value</FilterExpression>
@@ -1845,6 +1847,7 @@ ORDER BY RowNumber;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>=CStr(Fields!QueryNumber.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Sum(Fields!Total_Duration.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -2131,6 +2134,7 @@ ORDER BY RowNumber;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Runtime_Aggs</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Duration (ms): No data available.", "Bar chart of Duration (ms). X-axis: Query Number. Y-axis: Duration (ms).")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!DurationDescRowNumber.Value</FilterExpression>
@@ -2208,6 +2212,7 @@ ORDER BY RowNumber;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>=CStr(Fields!QueryNumber.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Sum(Fields!Total_Logical_IO_Reads.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -2494,6 +2499,7 @@ ORDER BY RowNumber;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Runtime_Aggs</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Reads: No data available.", "Bar chart of Reads. X-axis: Query Number. Y-axis: Reads.")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!Logical_IO_ReadsDescRowNumber.Value</FilterExpression>
@@ -2571,6 +2577,7 @@ ORDER BY RowNumber;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>=CStr(Fields!QueryNumber.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Sum(Fields!Total_Logical_IO_Writes.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -2857,6 +2864,7 @@ ORDER BY RowNumber;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Runtime_Aggs</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Writes: No data available.", "Bar chart of Writes. X-axis: Query Number. Y-axis: Writes.")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!Logical_IO_WritesDescRowNumber.Value</FilterExpression>
@@ -2934,6 +2942,7 @@ ORDER BY RowNumber;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>=CStr(Fields!QueryNumber.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Sum(Fields!Total_Query_Memory.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -3220,6 +3229,7 @@ ORDER BY RowNumber;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Runtime_Aggs</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Query Memory (KB): No data available.", "Bar chart of Query Memory (KB). X-axis: Query Number. Y-axis: Query Memory (KB).")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!Query_MemoryDescRowNumber.Value</FilterExpression>

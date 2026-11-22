@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
   <am:AuthoringMetadata>
     <am:CreatedBy>
@@ -404,7 +404,7 @@ WHERE dl.ObjectName IN ( 'Process' )
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!InstanceName.Value) &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!CounterValue.Value)), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -665,6 +665,7 @@ WHERE dl.ObjectName IN ( 'Process' )
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetCPU</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Top 10 CPU Processes - By % Processor Time: No data available.", "Line chart of Top 10 CPU Processes - By % Processor Time" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetCPU") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetCPU")), CDate(Max(Fields!CounterDateTime.Value, "DataSetCPU"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetCPU") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetCPU") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Top 10 CPU Processes.")</ToolTip>
             <Top>0.50972in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>
@@ -751,7 +752,7 @@ WHERE dl.ObjectName IN ( 'Process' )
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!InstanceName.Value) &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!CounterValue.Value)), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -1014,6 +1015,7 @@ WHERE dl.ObjectName IN ( 'Process' )
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetPrivilegedTime</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Top 10 CPU Processes - By % Privileged Time: No data available.", "Line chart of Top 10 CPU Processes - By % Privileged Time" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetPrivilegedTime") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetPrivilegedTime")), CDate(Max(Fields!CounterDateTime.Value, "DataSetPrivilegedTime"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetPrivilegedTime") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetPrivilegedTime") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: % Privileged Time.")</ToolTip>
             <Top>2.55139in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>
@@ -1061,7 +1063,7 @@ WHERE dl.ObjectName IN ( 'Process' )
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>="SQL Compilations/sec" &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -1303,6 +1305,7 @@ WHERE dl.ObjectName IN ( 'Process' )
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetCompilations</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "SQL Compilations/sec: No data available.", "Line chart of SQL Compilations/sec" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetCompilations") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetCompilations")), CDate(Max(Fields!CounterDateTime.Value, "DataSetCompilations"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetCompilations") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetCompilations") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Compilations/sec.")</ToolTip>
             <Top>8.725in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>
@@ -1350,7 +1353,7 @@ WHERE dl.ObjectName IN ( 'Process' )
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>="SQL Re-Compilations/sec" &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -1592,6 +1595,7 @@ WHERE dl.ObjectName IN ( 'Process' )
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetReCompilations</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "SQL Re-Compilations/sec: No data available.", "Line chart of SQL Re-Compilations/sec" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetReCompilations") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetReCompilations")), CDate(Max(Fields!CounterDateTime.Value, "DataSetReCompilations"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetReCompilations") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetReCompilations") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: SQL Re-compilations/sec.")</ToolTip>
             <Top>10.78056in</Top>
             <Left>0.26667in</Left>
             <Height>2in</Height>
@@ -1639,7 +1643,7 @@ WHERE dl.ObjectName IN ( 'Process' )
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>="Batches/sec" &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -1881,6 +1885,7 @@ WHERE dl.ObjectName IN ( 'Process' )
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetBatchesPerSec</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Batches/sec: No data available.", "Line chart of Batches/sec" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetBatchesPerSec") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetBatchesPerSec")), CDate(Max(Fields!CounterDateTime.Value, "DataSetBatchesPerSec"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetBatchesPerSec") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetBatchesPerSec") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Batches/Sec.")</ToolTip>
             <Top>6.65556in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>
@@ -1933,7 +1938,7 @@ WHERE dl.ObjectName IN ( 'Process' )
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!InstanceName.Value) &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!CounterValue.Value)), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -2194,6 +2199,7 @@ WHERE dl.ObjectName IN ( 'Process' )
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetUserTime</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Top 10 CPU Processes - By % User Time: No data available.", "Line chart of Top 10 CPU Processes - By % User Time" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetUserTime") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetUserTime")), CDate(Max(Fields!CounterDateTime.Value, "DataSetUserTime"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetUserTime") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetUserTime") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: % User Time.")</ToolTip>
             <Top>4.61389in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>

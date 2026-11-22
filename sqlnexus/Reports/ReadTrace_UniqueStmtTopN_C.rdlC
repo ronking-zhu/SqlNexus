@@ -438,6 +438,7 @@
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>=CStr(Fields!HashID.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Sum(Fields!CPU.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -684,6 +685,7 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>STMT_TOPN</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "CPU Usage: No data available.", "Bar chart of CPU Usage. X-axis: Query Number. Y-axis: CPU Usage.")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!CPU.Value</FilterExpression>
@@ -1596,6 +1598,7 @@
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>=CStr(Fields!HashID.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Fields!READS.Value), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -1844,6 +1847,7 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>STMT_TOPN</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Logical Reads: No data available.", "Bar chart of Logical Reads. X-axis: Query Number. Y-axis: Logical Reads.")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!READS.Value</FilterExpression>
@@ -1971,6 +1975,7 @@
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>=CStr(Fields!HashID.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Fields!WRITES.Value), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -2219,6 +2224,7 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>STMT_TOPN</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Logical Writes: No data available.", "Bar chart of Logical Writes. X-axis: Query Number. Y-axis: Logical Writes.")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!WRITES.Value</FilterExpression>
@@ -2345,6 +2351,7 @@
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>=CStr(Fields!HashID.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Fields!DURATION.Value), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -2593,6 +2600,7 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>STMT_TOPN</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Duration: No data available.", "Bar chart of Duration. X-axis: Query Number. Y-axis: Duration.")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!DURATION.Value</FilterExpression>

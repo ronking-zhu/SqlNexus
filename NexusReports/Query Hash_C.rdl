@@ -1098,6 +1098,7 @@ ELSE
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>=CStr(Fields!rownumber.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Sum(Fields!DisplayValue.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -1359,6 +1360,7 @@ ELSE
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetQueryHashReport</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Top Queries by selected criteria: No data available.", "Bar chart of Top Queries by selected criteria. X-axis: Query #. Y-axis: Selected metric value.")</ToolTip>
             <Top>1.125in</Top>
             <Left>0.625in</Left>
             <Height>3.625in</Height>

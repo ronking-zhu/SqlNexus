@@ -346,7 +346,7 @@ WHERE text = @QueryText;</CommandText>
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>="granted_memory_mb" &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!granted_memory_mb.Value)), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style />
@@ -389,6 +389,7 @@ WHERE text = @QueryText;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>="requested_memory_mb" &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!requested_memory_mb.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -711,6 +712,7 @@ WHERE text = @QueryText;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_QE_Memory_by_text</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Memory Grants Over Time for a specific query (below): No data available.", "Line chart of Memory Grants Over Time for a specific query (below)" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_QE_Memory_by_text") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_QE_Memory_by_text")), CDate(Max(Fields!runtime.Value, "DataSet_QE_Memory_by_text"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_QE_Memory_by_text") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_QE_Memory_by_text") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: RunTime. Y-axis: Amount of memory requested/granted.")</ToolTip>
             <Top>1.60417in</Top>
             <Left>2.85417in</Left>
             <Height>3.91667in</Height>

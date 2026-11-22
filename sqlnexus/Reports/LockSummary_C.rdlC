@@ -998,7 +998,7 @@ BETWEEN @StartTime AND @EndTime;</CommandText>
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!resource_type.Value) &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!lockcount.Value)), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style />
@@ -1329,6 +1329,7 @@ BETWEEN @StartTime AND @EndTime;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_LockSummary</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Lock Count By Resource Type: No data available.", "Line chart of Lock Count By Resource Type" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_LockSummary") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_LockSummary")), CDate(Max(Fields!runtime.Value, "DataSet_LockSummary"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_LockSummary") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_LockSummary") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Runtime. Y-axis: Number of Locks.")</ToolTip>
             <Top>0.90625in</Top>
             <Left>0.955in</Left>
             <Height>5.32292in</Height>

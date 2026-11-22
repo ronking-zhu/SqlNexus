@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
   <am:AuthoringMetadata>
     <am:CreatedBy>
@@ -463,6 +463,7 @@ FROM dbo.tbl_QDS_Query_Stats;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>=CStr(Fields!Query_Number.Value) &amp; ": value is " &amp; CStr(Round(CDbl(sum(Fields!avg_cpu_time.Value*Fields!count_executions.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -678,6 +679,7 @@ FROM dbo.tbl_QDS_Query_Stats;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_QueryStats</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "TOP N CPU (us): No data available.", "Bar chart of TOP N CPU (us). X-axis: Query Number. Y-axis: CPU (us).")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!Query_Number.Value</FilterExpression>
@@ -743,6 +745,7 @@ FROM dbo.tbl_QDS_Query_Stats;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>=CStr(Fields!Query_Number.Value) &amp; ": value is " &amp; CStr(Round(CDbl(sum(Fields!count_executions.Value*Fields!avg_duration.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -958,6 +961,7 @@ FROM dbo.tbl_QDS_Query_Stats;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_QueryStats</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "TOP N Duration: No data available.", "Bar chart of TOP N Duration. X-axis: Query Number. Y-axis: Duration (us).")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!Duration_Order.Value</FilterExpression>
@@ -1023,6 +1027,7 @@ FROM dbo.tbl_QDS_Query_Stats;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>=CStr(Fields!Query_Number.Value) &amp; ": value is " &amp; CStr(Round(CDbl(sum(Fields!avg_logical_io_reads.Value*Fields!count_executions.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -1238,6 +1243,7 @@ FROM dbo.tbl_QDS_Query_Stats;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_QueryStats</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "TOP N Logical Reads: No data available.", "Bar chart of TOP N Logical Reads. X-axis: Query Number. Y-axis: Reads.")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!Logical_Reads_Order.Value</FilterExpression>
@@ -1303,6 +1309,7 @@ FROM dbo.tbl_QDS_Query_Stats;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>=CStr(Fields!Query_Number.Value) &amp; ": value is " &amp; CStr(Round(CDbl(sum(Fields!count_executions.Value*Fields!avg_logical_io_writes.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -1517,6 +1524,7 @@ FROM dbo.tbl_QDS_Query_Stats;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_QueryStats</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "TOP N Logical Writes: No data available.", "Bar chart of TOP N Logical Writes. X-axis: Query Number. Y-axis: Writes.")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!Logical_Writes_Order.Value</FilterExpression>
@@ -1582,6 +1590,7 @@ FROM dbo.tbl_QDS_Query_Stats;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>=CStr(Fields!Query_Number.Value) &amp; ": value is " &amp; CStr(Round(CDbl(sum(Fields!count_executions.Value*Fields!avg_query_max_used_memory.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Bar</Type>
@@ -1796,6 +1805,7 @@ FROM dbo.tbl_QDS_Query_Stats;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_QueryStats</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Query N Memory: No data available.", "Bar chart of Query N Memory. X-axis: Query Number. Y-axis: Memory (KB).")</ToolTip>
             <Filters>
               <Filter>
                 <FilterExpression>=Fields!Memory_Order.Value</FilterExpression>

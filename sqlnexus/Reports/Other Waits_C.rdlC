@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -223,7 +223,8 @@ ELSE
                     <Style>
                       <FontSize>14pt</FontSize>
                       <FontWeight>Bold</FontWeight>
-                    <Color>=Variables!ReportTextColor.Value</Color></Style>
+                      <Color>=Variables!ReportTextColor.Value</Color>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -252,7 +253,8 @@ ELSE
                         <Style>
                           <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
-                        <Color>=Variables!ReportTextColor.Value</Color></Style>
+                          <Color>=Variables!ReportTextColor.Value</Color>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style>
@@ -286,7 +288,8 @@ ELSE
                         <Value>=Parameters!StartTime.Value</Value>
                         <Style>
                           <FontSize>8pt</FontSize>
-                        <Color>=Variables!ReportTextColor.Value</Color></Style>
+                          <Color>=Variables!ReportTextColor.Value</Color>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
@@ -320,7 +323,8 @@ ELSE
                         <Style>
                           <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
-                        <Color>=Variables!ReportTextColor.Value</Color></Style>
+                          <Color>=Variables!ReportTextColor.Value</Color>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style>
@@ -356,7 +360,8 @@ ELSE
                         <Value>=Parameters!EndTime.Value</Value>
                         <Style>
                           <FontSize>8pt</FontSize>
-                        <Color>=Variables!ReportTextColor.Value</Color></Style>
+                          <Color>=Variables!ReportTextColor.Value</Color>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
@@ -387,7 +392,9 @@ ELSE
             <Height>0.5in</Height>
             <Width>2.38542in</Width>
             <ZIndex>1</ZIndex>
-            <Style><Color>=Variables!ReportTextColor.Value</Color></Style>
+            <Style>
+              <Color>=Variables!ReportTextColor.Value</Color>
+            </Style>
           </Rectangle>
           <Chart Name="chartWaitCategoryTopN">
             <ChartCategoryHierarchy>
@@ -454,11 +461,8 @@ ELSE
                                   <Value>=Parameters!FmtAmbientBackground.Value</Value>
                                 </Parameter>
                                 <Parameter Name="ContrastTheme">
-
                                   <Value>=Parameters!ContrastTheme.Value</Value>
-
                                 </Parameter>
-
                               </Parameters>
                             </Drillthrough>
                           </Action>
@@ -472,8 +476,11 @@ ELSE
                       </Style>
                       <ChartMarker>
                         <Size>6pt</Size>
-                        <Style><Color>=Variables!ReportTextColor.Value</Color></Style>
+                        <Style>
+                          <Color>=Variables!ReportTextColor.Value</Color>
+                        </Style>
                       </ChartMarker>
+                      <ToolTip>=CStr(Fields!wait_category.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Sum(Fields!percent_of_total_waittime.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Subtype>Stacked</Subtype>
@@ -481,12 +488,18 @@ ELSE
                     <ShadowColor>#00ffffff</ShadowColor>
                   </Style>
                   <ChartEmptyPoints>
-                    <Style><Color>=Variables!ReportTextColor.Value</Color></Style>
+                    <Style>
+                      <Color>=Variables!ReportTextColor.Value</Color>
+                    </Style>
                     <ChartMarker>
-                      <Style><Color>=Variables!ReportTextColor.Value</Color></Style>
+                      <Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartMarker>
                     <ChartDataLabel>
-                      <Style><Color>=Variables!ReportTextColor.Value</Color></Style>
+                      <Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartDataLabel>
                   </ChartEmptyPoints>
                   <CustomProperties>
@@ -520,8 +533,8 @@ ELSE
                       <Caption />
                       <Style>
                         <FontSize>8pt</FontSize>
-                      
-                    <Color>=Variables!ReportTextColor.Value</Color></Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartAxisTitle>
                     <Margin>False</Margin>
                     <Interval>1</Interval>
@@ -530,7 +543,7 @@ ELSE
                       <Style>
                         <Border>
                           <Color>=Variables!ReportTextColor.Value</Color>
-                <Style>Solid</Style>
+                          <Style>Solid</Style>
                           <Width>0.75pt</Width>
                         </Border>
                       </Style>
@@ -541,7 +554,7 @@ ELSE
                       <Style>
                         <Border>
                           <Color>=Variables!ReportTextColor.Value</Color>
-                <Style>Solid</Style>
+                          <Style>Solid</Style>
                           <Width>0.75pt</Width>
                         </Border>
                       </Style>
@@ -560,26 +573,31 @@ ELSE
                     <IncludeZero>false</IncludeZero>
                     <MinFontSize>8pt</MinFontSize>
                     <ChartAxisScaleBreak>
-                      <Style><Color>=Variables!ReportTextColor.Value</Color></Style>
+                      <Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartAxisScaleBreak>
                   </ChartAxis>
                   <ChartAxis Name="Secondary">
                     <Style>
                       <FontSize>8pt</FontSize>
-                    <Color>=Variables!ReportTextColor.Value</Color></Style>
+                      <Color>=Variables!ReportTextColor.Value</Color>
+                    </Style>
                     <ChartAxisTitle>
                       <Caption />
                       <Style>
                         <FontSize>8pt</FontSize>
-                      
-                    <Color>=Variables!ReportTextColor.Value</Color></Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartAxisTitle>
                     <CrossAt>NaN</CrossAt>
                     <Location>Opposite</Location>
                     <Minimum>NaN</Minimum>
                     <Maximum>NaN</Maximum>
                     <ChartAxisScaleBreak>
-                      <Style><Color>=Variables!ReportTextColor.Value</Color></Style>
+                      <Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartAxisScaleBreak>
                   </ChartAxis>
                 </ChartCategoryAxes>
@@ -598,8 +616,8 @@ ELSE
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <TextDecoration>None</TextDecoration>
-                      
-                    <Color>=Variables!ReportTextColor.Value</Color></Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartAxisTitle>
                     <Margin>False</Margin>
                     <ChartMajorGridLines>
@@ -607,7 +625,7 @@ ELSE
                       <Style>
                         <Border>
                           <Color>=Variables!ReportTextColor.Value</Color>
-                <Style>Solid</Style>
+                          <Style>Solid</Style>
                           <Width>0.75pt</Width>
                         </Border>
                       </Style>
@@ -618,7 +636,7 @@ ELSE
                       <Style>
                         <Border>
                           <Color>=Variables!ReportTextColor.Value</Color>
-                <Style>Solid</Style>
+                          <Style>Solid</Style>
                           <Width>0.75pt</Width>
                         </Border>
                       </Style>
@@ -637,26 +655,31 @@ ELSE
                     <PreventFontGrow>true</PreventFontGrow>
                     <IncludeZero>false</IncludeZero>
                     <ChartAxisScaleBreak>
-                      <Style><Color>=Variables!ReportTextColor.Value</Color></Style>
+                      <Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartAxisScaleBreak>
                   </ChartAxis>
                   <ChartAxis Name="Secondary">
                     <Style>
                       <FontSize>8pt</FontSize>
-                    <Color>=Variables!ReportTextColor.Value</Color></Style>
+                      <Color>=Variables!ReportTextColor.Value</Color>
+                    </Style>
                     <ChartAxisTitle>
                       <Caption />
                       <Style>
                         <FontSize>8pt</FontSize>
-                      
-                    <Color>=Variables!ReportTextColor.Value</Color></Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartAxisTitle>
                     <CrossAt>NaN</CrossAt>
                     <Location>Opposite</Location>
                     <Minimum>NaN</Minimum>
                     <Maximum>NaN</Maximum>
                     <ChartAxisScaleBreak>
-                      <Style><Color>=Variables!ReportTextColor.Value</Color></Style>
+                      <Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartAxisScaleBreak>
                   </ChartAxis>
                 </ChartValueAxes>
@@ -670,7 +693,7 @@ ELSE
                 <Style>
                   <Border>
                     <Color>=Variables!ReportTextColor.Value</Color>
-                <Style>Solid</Style>
+                    <Style>Solid</Style>
                     <Width>0.75pt</Width>
                   </Border>
                   <BackgroundColor>=Variables!BodyColor.Value</BackgroundColor>
@@ -685,7 +708,7 @@ ELSE
                 <Style>
                   <Border>
                     <Color>=Variables!ReportTextColor.Value</Color>
-                <Style>Solid</Style>
+                    <Style>Solid</Style>
                     <Width>0.75pt</Width>
                   </Border>
                 </Style>
@@ -709,8 +732,8 @@ ELSE
                   <FontFamily>Tahoma</FontFamily>
                   <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
-                
-                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                  <Color>=Variables!ReportTextColor.Value</Color>
+                </Style>
               </ChartTitle>
             </ChartTitles>
             <Palette>Excel</Palette>
@@ -731,6 +754,7 @@ ELSE
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Bottleneck_WaitStatsTop5Categories</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Waits Other Than Top 5: No data available.", "Column chart of Waits Other Than Top 5. X-axis: Wait Category. Y-axis: % Active Thread Time.")</ToolTip>
             <Top>1.74653in</Top>
             <Left>0.125in</Left>
             <Height>4.25in</Height>
@@ -760,7 +784,8 @@ ELSE
                     <Value>This chart provides additoinal waits in the "other category' in bottleneck analysis.  Bottleneck Analysis will just pull out top 5 waits plus CPU.  Then put everything else into "other". this report gives you a breakout in case you are interested.</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
-                    <Color>=Variables!ReportTextColor.Value</Color></Style>
+                      <Color>=Variables!ReportTextColor.Value</Color>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -815,7 +840,8 @@ ELSE
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                                    <Color>=Variables!ReportTextColor.Value</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -848,7 +874,8 @@ ELSE
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                                    <Color>=Variables!ReportTextColor.Value</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -881,7 +908,8 @@ ELSE
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                                    <Color>=Variables!ReportTextColor.Value</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -915,7 +943,8 @@ ELSE
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                                    <Color>=Variables!ReportTextColor.Value</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -988,11 +1017,8 @@ ELSE
                                       <Value>=Parameters!FmtAmbientBackground.Value</Value>
                                     </Parameter>
                                     <Parameter Name="ContrastTheme">
-
                                       <Value>=Parameters!ContrastTheme.Value</Value>
-
                                     </Parameter>
-
                                   </Parameters>
                                 </Drillthrough>
                               </Action>
@@ -1024,7 +1050,8 @@ ELSE
                                   <Value>=Fields!total_wait_time_ms.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
-                                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                                    <Color>=Variables!ReportTextColor.Value</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1057,7 +1084,8 @@ ELSE
                                   <Value>=CInt(Fields!percent_of_total_waittime.Value) &amp; "%"</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
-                                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                                    <Color>=Variables!ReportTextColor.Value</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -1092,7 +1120,8 @@ ELSE
                                   <Value>=Fields!wait_time_ms_per_sec.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
-                                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                                    <Color>=Variables!ReportTextColor.Value</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1130,7 +1159,8 @@ ELSE
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                                    <Color>=Variables!ReportTextColor.Value</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -1161,7 +1191,8 @@ ELSE
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                                    <Color>=Variables!ReportTextColor.Value</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1194,7 +1225,8 @@ ELSE
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                                    <Color>=Variables!ReportTextColor.Value</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -1229,7 +1261,8 @@ ELSE
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                                    <Color>=Variables!ReportTextColor.Value</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1343,7 +1376,9 @@ ELSE
                     <TextRuns>
                       <TextRun>
                         <Value>=DataSets!DataSet_Bottleneck_WaitStatsTop5Categories.CommandText</Value>
-                        <Style><Color>=Variables!ReportTextColor.Value</Color></Style>
+                        <Style>
+                          <Color>=Variables!ReportTextColor.Value</Color>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style />
@@ -1387,7 +1422,9 @@ ELSE
           </Rectangle>
         </ReportItems>
         <Height>9.36806in</Height>
-        <Style><Color>=Variables!ReportTextColor.Value</Color></Style>
+        <Style>
+          <Color>=Variables!ReportTextColor.Value</Color>
+        </Style>
       </Body>
       <Width>10.5in</Width>
       <Page>

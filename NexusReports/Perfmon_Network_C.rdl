@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
   <am:AuthoringMetadata>
     <am:CreatedBy>
@@ -290,7 +290,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!InstanceName.Value) &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -558,6 +558,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetOutputQueueLength</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Output Queue Length: No data available.", "Line chart of Output Queue Length" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetOutputQueueLength") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetOutputQueueLength")), CDate(Max(Fields!CounterDateTime.Value, "DataSetOutputQueueLength"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetOutputQueueLength") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetOutputQueueLength") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Output Queue Length.")</ToolTip>
             <Top>0.51667in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>
@@ -644,7 +645,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!InstanceName.Value) &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -912,6 +913,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetPacketsReceivedDiscarded</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Packets Received Discarded: No data available.", "Line chart of Packets Received Discarded" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetPacketsReceivedDiscarded") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetPacketsReceivedDiscarded")), CDate(Max(Fields!CounterDateTime.Value, "DataSetPacketsReceivedDiscarded"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetPacketsReceivedDiscarded") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetPacketsReceivedDiscarded") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Packets Received Discarded.")</ToolTip>
             <Top>2.79694in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>
@@ -964,7 +966,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!InstanceName.Value) &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -1232,6 +1234,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetPacketsOutboundDiscarded</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Packets Outbound Discarded: No data available.", "Line chart of Packets Outbound Discarded" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetPacketsOutboundDiscarded") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetPacketsOutboundDiscarded")), CDate(Max(Fields!CounterDateTime.Value, "DataSetPacketsOutboundDiscarded"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetPacketsOutboundDiscarded") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetPacketsOutboundDiscarded") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Packets Outbound Discarded.")</ToolTip>
             <Top>5.04694in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>
@@ -1284,7 +1287,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!InstanceName.Value) &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -1552,6 +1555,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetBytesTotalPerSec</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Bytes (GB )Total/Sec: No data available.", "Line chart of Bytes (GB )Total/Sec" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetBytesTotalPerSec") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetBytesTotalPerSec")), CDate(Max(Fields!CounterDateTime.Value, "DataSetBytesTotalPerSec"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetBytesTotalPerSec") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetBytesTotalPerSec") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Bytes Total/Sec.")</ToolTip>
             <Top>7.26569in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>

@@ -482,7 +482,7 @@ FROM
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!QueryID.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Avg(Fields!max_granted_memory_mb.Value)), 2)) &amp; "."</ToolTip>
                       <ActionInfo>
                         <Actions>
                           <Action>
@@ -832,6 +832,7 @@ FROM
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Max_Grant_By_Query</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Top 5 Memory Consuming Queries: No data available.", "Bar chart of Top 5 Memory Consuming Queries. X-axis: Query ID (see table below). Y-axis: Max Memory Grant (MB).")</ToolTip>
             <Top>5.68625in</Top>
             <Left>2.85417in</Left>
             <Height>5.20833in</Height>
@@ -889,7 +890,7 @@ FROM
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>="granted_memory_mb" &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!granted_memory_mb.Value)), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style />
@@ -932,6 +933,7 @@ FROM
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>="requested_memory_mb" &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!requested_memory_mb.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -1258,6 +1260,7 @@ FROM
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_QE_Memory_All</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Memory Grants Over Time: No data available.", "Line chart of Memory Grants Over Time" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_QE_Memory_All") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_QE_Memory_All")), CDate(Max(Fields!runtime.Value, "DataSet_QE_Memory_All"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_QE_Memory_All") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_QE_Memory_All") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: RunTime. Y-axis: Amount of memory requested/granted (MB).")</ToolTip>
             <Top>1.60417in</Top>
             <Left>2.85417in</Left>
             <Height>3.91667in</Height>

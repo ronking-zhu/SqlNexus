@@ -1633,6 +1633,7 @@ Parameters!ContrastTheme.Value="None", "Black")</Color>
                             <Size>6pt</Size>
                             <Style />
                           </ChartMarker>
+                          <ToolTip>="Series1" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowStartingEvents.Value, Fields!StartingEvents.Value * First(Fields!StartingEventsScale.Value, "BATCHDETAIL_SCALE"), -1)), 2)) &amp; "."</ToolTip>
                         </ChartDataPoint>
                       </ChartDataPoints>
                       <Type>Line</Type>
@@ -1673,6 +1674,7 @@ Parameters!ContrastTheme.Value="None", "Black")</Color>
                             <Size>6pt</Size>
                             <Style />
                           </ChartMarker>
+                          <ToolTip>="Series2" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowCompletedEvents.Value, Fields!CompletedEvents.Value * First(Fields!CompletedEventsScale.Value, "BATCHDETAIL_SCALE"), -1)), 2)) &amp; "."</ToolTip>
                         </ChartDataPoint>
                       </ChartDataPoints>
                       <Type>Line</Type>
@@ -1713,6 +1715,7 @@ Parameters!ContrastTheme.Value="None", "Black")</Color>
                             <Size>6pt</Size>
                             <Style />
                           </ChartMarker>
+                          <ToolTip>="Series3" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowCPU.Value, 1, -1) * Fields!CPU.Value / Fields!CompletedEvents.Value * First(Fields!CPUScale.Value, "BATCHDETAIL_SCALE")), 2)) &amp; "."</ToolTip>
                         </ChartDataPoint>
                       </ChartDataPoints>
                       <Type>Line</Type>
@@ -1752,6 +1755,7 @@ Parameters!ContrastTheme.Value="None", "Black")</Color>
                             <Size>6pt</Size>
                             <Style />
                           </ChartMarker>
+                          <ToolTip>="Series4" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowReads.Value, 1, -1) * Fields!Reads.Value / Fields!CompletedEvents.Value * First(Fields!ReadsScale.Value, "BATCHDETAIL_SCALE")), 2)) &amp; "."</ToolTip>
                         </ChartDataPoint>
                       </ChartDataPoints>
                       <Type>Line</Type>
@@ -1792,6 +1796,7 @@ Parameters!ContrastTheme.Value="None", "Black")</Color>
                             <Size>6pt</Size>
                             <Style />
                           </ChartMarker>
+                          <ToolTip>="Series5" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowWrites.Value, 1, -1) * Fields!Writes.Value / Fields!CompletedEvents.Value * First(Fields!WritesScale.Value, "BATCHDETAIL_SCALE")), 2)) &amp; "."</ToolTip>
                         </ChartDataPoint>
                       </ChartDataPoints>
                       <Type>Line</Type>
@@ -1832,6 +1837,7 @@ Parameters!ContrastTheme.Value="None", "Black")</Color>
                             <Size>6pt</Size>
                             <Style />
                           </ChartMarker>
+                          <ToolTip>="Series6" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowDuration.Value, 1, -1) * Fields!Duration.Value / Fields!CompletedEvents.Value * First(Fields!DurationScale.Value, "BATCHDETAIL_SCALE")), 2)) &amp; "."</ToolTip>
                         </ChartDataPoint>
                       </ChartDataPoints>
                       <Type>Line</Type>
@@ -1871,6 +1877,7 @@ Parameters!ContrastTheme.Value="None", "Black")</Color>
                             <Size>6pt</Size>
                             <Style />
                           </ChartMarker>
+                          <ToolTip>="Series7" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowAttentions.Value, Fields!Attentions.Value* First(Fields!AttentionEventsScale.Value, "BATCHDETAIL_SCALE"), -1)), 2)) &amp; "."</ToolTip>
                         </ChartDataPoint>
                       </ChartDataPoints>
                       <Type>Line</Type>
@@ -2186,6 +2193,7 @@ Parameters!ContrastTheme.Value="None", "Black")</Color>
                   </Style>
                 </ChartNoDataMessage>
                 <DataSetName>BATCH_DETAIL</DataSetName>
+                <ToolTip>=IIf(CountRows() = 0, "Batch Performance Over Time: No data available.", "Line chart of Batch Performance Over Time" &amp; IIf(CountDistinct(Fields!EndTime.Value, "BATCH_DETAIL") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!EndTime.Value, "BATCH_DETAIL")), CDate(Max(Fields!EndTime.Value, "BATCH_DETAIL"))) / IIf(CountDistinct(Fields!EndTime.Value, "BATCH_DETAIL") &gt; 1, CountDistinct(Fields!EndTime.Value, "BATCH_DETAIL") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Scaled Resource Usage.")</ToolTip>
                 <Top>3.575in</Top>
                 <Left>0.1375in</Left>
                 <Height>5.375in</Height>

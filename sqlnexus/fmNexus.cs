@@ -3333,6 +3333,7 @@ namespace sqlnexus
             try
             {
                 UpdateReportButtons();
+                ReportChartAccessibilityEnhancer.Attach(( sender as ReportViewer ) ?? CurrentReportViewer);
             }
             catch (Exception ex)
             {
