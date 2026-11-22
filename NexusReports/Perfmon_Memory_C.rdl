@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
   <am:AuthoringMetadata>
     <am:CreatedBy>
@@ -437,7 +437,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!InstanceName.Value) &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; " MB."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -705,6 +705,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetMemory</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Top 10 Memory Processes: No data available.", "Line chart of Top 10 Memory Processes" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetMemory") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetMemory")), CDate(Max(Fields!CounterDateTime.Value, "DataSetMemory"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetMemory") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetMemory") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Memory in MB.")</ToolTip>
             <Top>0.51667in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>
@@ -786,7 +787,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>="Available MBytes" &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; " MB."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -1035,6 +1036,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetAvailableMBytes</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Available MBytes: No data available.", "Line chart of Available MBytes" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetAvailableMBytes") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetAvailableMBytes")), CDate(Max(Fields!CounterDateTime.Value, "DataSetAvailableMBytes"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetAvailableMBytes") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetAvailableMBytes") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Available MBytes.")</ToolTip>
             <Top>2.58611in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>
@@ -1082,7 +1084,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>="Cache Bytes" &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -1331,6 +1333,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetCacheBytes</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Cache Bytes: No data available.", "Line chart of Cache Bytes" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetCacheBytes") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetCacheBytes")), CDate(Max(Fields!CounterDateTime.Value, "DataSetCacheBytes"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetCacheBytes") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetCacheBytes") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Cache Bytes in MB.")</ToolTip>
             <Top>4.65556in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>
@@ -1378,7 +1381,7 @@ ORDER BY dat.CounterDateTime;</CommandText>
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>="Lazy Writes/sec" &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -1629,6 +1632,7 @@ Indicates the number of buffers written per second by the buffer manager's lazy 
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetLazyWrites</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Lazy Writes/sec: No data available.", "Line chart of Lazy Writes/sec" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetLazyWrites") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetLazyWrites")), CDate(Max(Fields!CounterDateTime.Value, "DataSetLazyWrites"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetLazyWrites") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetLazyWrites") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Lazy writes/sec.")</ToolTip>
             <Top>10.82223in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>
@@ -1676,7 +1680,7 @@ Indicates the number of buffers written per second by the buffer manager's lazy 
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>="Checkpoint pages/sec" &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -1927,6 +1931,7 @@ Indicates the number of pages flushed to disk per second by a checkpoint or othe
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetCheckPoint</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Checkpoint pages/sec: No data available.", "Line chart of Checkpoint pages/sec" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetCheckPoint") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetCheckPoint")), CDate(Max(Fields!CounterDateTime.Value, "DataSetCheckPoint"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetCheckPoint") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetCheckPoint") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Checkpoint pages/sec.")</ToolTip>
             <Top>8.76667in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>
@@ -1974,7 +1979,7 @@ Indicates the number of pages flushed to disk per second by a checkpoint or othe
                           <Color>=Variables!ReportTextColor.Value</Color>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>="Page Life Expectancy" &amp; ": at time " &amp; CStr(Fields!CounterDateTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Fields!CounterValue.Value), 2)) &amp; " seconds."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Style>
@@ -2223,6 +2228,7 @@ Indicates the number of pages flushed to disk per second by a checkpoint or othe
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetPLE</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Page Life Expectancy: No data available.", "Line chart of Page Life Expectancy" &amp; IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetPLE") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!CounterDateTime.Value, "DataSetPLE")), CDate(Max(Fields!CounterDateTime.Value, "DataSetPLE"))) / IIf(CountDistinct(Fields!CounterDateTime.Value, "DataSetPLE") &gt; 1, CountDistinct(Fields!CounterDateTime.Value, "DataSetPLE") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Page Life Expectancy.")</ToolTip>
             <Top>6.71111in</Top>
             <Left>0.27708in</Left>
             <Height>2in</Height>

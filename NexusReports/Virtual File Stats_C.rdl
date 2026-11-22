@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
   <am:AuthoringMetadata>
     <am:CreatedBy>
@@ -336,7 +336,7 @@ ORDER BY 8 DESC;</CommandText>
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!dbid.Value) &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!AvgIoStallReadMs.Value)), 2)) &amp; "."</ToolTip>
                       <ActionInfo>
                         <Actions>
                           <Action>
@@ -692,6 +692,7 @@ ORDER BY 8 DESC;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Stats_Per_DB</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Avg Read Stall Over Time: No data available.", "Line chart of Avg Read Stall Over Time" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_Stats_Per_DB") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_Stats_Per_DB")), CDate(Max(Fields!runtime.Value, "DataSet_Stats_Per_DB"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_Stats_Per_DB") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_Stats_Per_DB") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Runtime. Y-axis: AvgReadStallMs.")</ToolTip>
             <Top>1.68417in</Top>
             <Left>0.29875in</Left>
             <Height>4.61458in</Height>
@@ -1113,7 +1114,7 @@ ORDER BY 8 DESC;</CommandText>
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!dbid.Value) &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!AvgIoStallWriteMs.Value)), 2)) &amp; "."</ToolTip>
                       <ActionInfo>
                         <Actions>
                           <Action>
@@ -1462,6 +1463,7 @@ ORDER BY 8 DESC;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Stats_Per_DB</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Avg Write Stall Over Time: No data available.", "Line chart of Avg Write Stall Over Time" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_Stats_Per_DB") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_Stats_Per_DB")), CDate(Max(Fields!runtime.Value, "DataSet_Stats_Per_DB"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_Stats_Per_DB") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_Stats_Per_DB") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Runtime. Y-axis: AvgReadStallMs.")</ToolTip>
             <Top>6.71709in</Top>
             <Left>0.29875in</Left>
             <Height>5.46875in</Height>
@@ -1527,7 +1529,7 @@ ORDER BY 8 DESC;</CommandText>
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!dbid.Value) &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!BytesReadPerSecond.Value)), 2)) &amp; "."</ToolTip>
                       <ActionInfo>
                         <Actions>
                           <Action>
@@ -1877,6 +1879,7 @@ ORDER BY 8 DESC;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Stats_Per_DB</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Bytes Read Per sec per DB: No data available.", "Line chart of Bytes Read Per sec per DB" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_Stats_Per_DB") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_Stats_Per_DB")), CDate(Max(Fields!runtime.Value, "DataSet_Stats_Per_DB"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_Stats_Per_DB") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_Stats_Per_DB") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Runtime. Y-axis: BytesRead /sec.")</ToolTip>
             <Top>12.47229in</Top>
             <Left>0.29875in</Left>
             <Height>5.46875in</Height>
@@ -1942,7 +1945,7 @@ ORDER BY 8 DESC;</CommandText>
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!dbid.Value) &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!BytesWrittenPerSecond.Value)), 2)) &amp; "."</ToolTip>
                       <ActionInfo>
                         <Actions>
                           <Action>
@@ -2292,6 +2295,7 @@ ORDER BY 8 DESC;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Stats_Per_DB</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Bytes Written Per sec per DB: No data available.", "Line chart of Bytes Written Per sec per DB" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_Stats_Per_DB") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_Stats_Per_DB")), CDate(Max(Fields!runtime.Value, "DataSet_Stats_Per_DB"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_Stats_Per_DB") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_Stats_Per_DB") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Runtime. Y-axis: Bytes Written /sec.")</ToolTip>
             <Top>18.15979in</Top>
             <Left>0.29875in</Left>
             <Height>5.46875in</Height>

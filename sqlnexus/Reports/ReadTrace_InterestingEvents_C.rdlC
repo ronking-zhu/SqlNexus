@@ -854,6 +854,7 @@ Parameters!ContrastTheme.Value="None", "Black")</Color>
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>=CStr(Fields!name.Value) &amp; ": at time " &amp; CStr(Fields!IntervalEndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(sum(Fields!Count.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -1137,6 +1138,7 @@ Parameters!ContrastTheme.Value="None", "Black")</Color>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>INTERESTINGEVENTS</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Event Count: No data available.", "Line chart of Event Count" &amp; IIf(CountDistinct(Fields!IntervalEndTime.Value, "INTERESTINGEVENTS") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!IntervalEndTime.Value, "INTERESTINGEVENTS")), CDate(Max(Fields!IntervalEndTime.Value, "INTERESTINGEVENTS"))) / IIf(CountDistinct(Fields!IntervalEndTime.Value, "INTERESTINGEVENTS") &gt; 1, CountDistinct(Fields!IntervalEndTime.Value, "INTERESTINGEVENTS") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: Event Count.")</ToolTip>
             <Top>1.25in</Top>
             <Left>0.125in</Left>
             <Height>4.75in</Height>

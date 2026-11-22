@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
   <am:AuthoringMetadata>
     <am:CreatedBy>
@@ -371,7 +371,7 @@ GROUP BY runtime,
                         </Style>
                         <UseValueAsLabel>true</UseValueAsLabel>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!type.Value) &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Avg(Fields!pages_kb.Value)), 2)) &amp; "."</ToolTip>
                       <Style>
                         <Color>=Variables!ReportTextColor.Value</Color>
                       </Style>
@@ -429,8 +429,8 @@ GROUP BY runtime,
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
                         <FontSize>8pt</FontSize>
-                      
-                    <Color>=Variables!ReportTextColor.Value</Color></Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartAxisTitle>
                     <ChartMajorGridLines>
                       <Enabled>False</Enabled>
@@ -483,8 +483,8 @@ GROUP BY runtime,
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
                         <FontSize>8pt</FontSize>
-                      
-                    <Color>=Variables!ReportTextColor.Value</Color></Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartAxisTitle>
                     <ChartMajorGridLines>
                       <Enabled>False</Enabled>
@@ -541,8 +541,8 @@ GROUP BY runtime,
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
                         <FontSize>8pt</FontSize>
-                      
-                    <Color>=Variables!ReportTextColor.Value</Color></Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartAxisTitle>
                     <ChartMajorGridLines>
                       <Style>
@@ -594,8 +594,8 @@ GROUP BY runtime,
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
                         <FontSize>8pt</FontSize>
-                      
-                    <Color>=Variables!ReportTextColor.Value</Color></Style>
+                        <Color>=Variables!ReportTextColor.Value</Color>
+                      </Style>
                     </ChartAxisTitle>
                     <ChartMajorGridLines>
                       <Style>
@@ -677,8 +677,8 @@ GROUP BY runtime,
                   <FontWeight>Bold</FontWeight>
                   <TextAlign>General</TextAlign>
                   <VerticalAlign>Top</VerticalAlign>
-                
-                  <Color>=Variables!ReportTextColor.Value</Color></Style>
+                  <Color>=Variables!ReportTextColor.Value</Color>
+                </Style>
               </ChartTitle>
             </ChartTitles>
             <Palette>Excel</Palette>
@@ -713,6 +713,7 @@ GROUP BY runtime,
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Top_Memory_Clerk_Types</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Top 5 Memory Clerks over time: No data available.", "Line chart of Top 5 Memory Clerks over time" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_Top_Memory_Clerk_Types") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_Top_Memory_Clerk_Types")), CDate(Max(Fields!runtime.Value, "DataSet_Top_Memory_Clerk_Types"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_Top_Memory_Clerk_Types") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_Top_Memory_Clerk_Types") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: runtime. Y-axis: pages_kb.")</ToolTip>
             <Top>1.88542in</Top>
             <Left>0.29875in</Left>
             <Height>4.23958in</Height>

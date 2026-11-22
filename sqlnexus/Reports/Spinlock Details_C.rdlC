@@ -475,7 +475,7 @@ END;</CommandText>
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!spinlock_name.Value) &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Avg(Fields!sleep_time_ms.Value)), 2)) &amp; "."</ToolTip>
                       <Style>
                         <Border>
                           <Width>1.5pt</Width>
@@ -785,6 +785,7 @@ END;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Spinlock_Details</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Spinlock Sleep Time (ms): No data available.", "Line chart of Spinlock Sleep Time (ms)" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_Spinlock_Details") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_Spinlock_Details")), CDate(Max(Fields!runtime.Value, "DataSet_Spinlock_Details"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_Spinlock_Details") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_Spinlock_Details") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Runtime. Y-axis: Sleep time (ms).")</ToolTip>
             <Top>4.86042in</Top>
             <Left>7.8118in</Left>
             <Height>3.67708in</Height>
@@ -849,7 +850,7 @@ END;</CommandText>
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!spinlock_name.Value) &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Avg(Fields!spins_per_collision.Value)), 2)) &amp; "."</ToolTip>
                       <Style>
                         <Border>
                           <Width>1.5pt</Width>
@@ -1160,6 +1161,7 @@ END;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Spinlock_Details</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Spins per Collision: No data available.", "Line chart of Spins per Collision" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_Spinlock_Details") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_Spinlock_Details")), CDate(Max(Fields!runtime.Value, "DataSet_Spinlock_Details"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_Spinlock_Details") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_Spinlock_Details") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Runtime. Y-axis: spins per collision.")</ToolTip>
             <Top>4.86042in</Top>
             <Left>0.65208in</Left>
             <Height>3.67708in</Height>
@@ -1225,7 +1227,7 @@ END;</CommandText>
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!spinlock_name.Value) &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Avg(Fields!delta_backoff.Value)), 2)) &amp; "."</ToolTip>
                       <Style>
                         <Border>
                           <Width>1.5pt</Width>
@@ -1536,6 +1538,7 @@ END;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Spinlock_Details</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Spinlock Delta Backoffs: No data available.", "Line chart of Spinlock Delta Backoffs" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_Spinlock_Details") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_Spinlock_Details")), CDate(Max(Fields!runtime.Value, "DataSet_Spinlock_Details"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_Spinlock_Details") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_Spinlock_Details") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: RunTime. Y-axis: Delta backoffs.")</ToolTip>
             <Top>1.17292in</Top>
             <Left>7.79791in</Left>
             <Height>3.6875in</Height>
@@ -1601,7 +1604,7 @@ END;</CommandText>
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!spinlock_name.Value) &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!delta_spins_per_ms_per_cpu.Value)), 2)) &amp; "."</ToolTip>
                       <Style>
                         <Border>
                           <Width>1.5pt</Width>
@@ -1911,6 +1914,7 @@ END;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Spinlock_Details</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Delta Spins per ms per CPU: No data available.", "Line chart of Delta Spins per ms per CPU" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_Spinlock_Details") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_Spinlock_Details")), CDate(Max(Fields!runtime.Value, "DataSet_Spinlock_Details"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_Spinlock_Details") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_Spinlock_Details") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Runtime. Y-axis: delta spins /ms/cpu.")</ToolTip>
             <Top>1.17292in</Top>
             <Left>0.63819in</Left>
             <Height>3.6875in</Height>

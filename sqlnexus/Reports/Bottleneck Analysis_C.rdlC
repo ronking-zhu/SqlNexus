@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
   <am:AuthoringMetadata>
     <am:CreatedBy>
@@ -717,6 +717,7 @@ ELSE
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>="Series1" &amp; ": at time " &amp; CStr(Fields!EventTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!sql_cpu_utilization.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Subtype>Stacked</Subtype>
@@ -764,6 +765,7 @@ ELSE
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>="Series2" &amp; ": at time " &amp; CStr(Fields!EventTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!nonsql_cpu_utilization.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Subtype>Stacked</Subtype>
@@ -1013,6 +1015,7 @@ ELSE
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_SQL_CPU</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "System CPU Utilization: No data available.", "Column chart of System CPU Utilization" &amp; IIf(CountDistinct(Fields!EventTime.Value, "DataSet_SQL_CPU") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!EventTime.Value, "DataSet_SQL_CPU")), CDate(Max(Fields!EventTime.Value, "DataSet_SQL_CPU"))) / IIf(CountDistinct(Fields!EventTime.Value, "DataSet_SQL_CPU") &gt; 1, CountDistinct(Fields!EventTime.Value, "DataSet_SQL_CPU") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Time. Y-axis: % CPU.")</ToolTip>
             <Top>1.26042in</Top>
             <Left>0.25in</Left>
             <Height>3in</Height>
@@ -1114,6 +1117,7 @@ ELSE
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>=CStr(Fields!wait_category.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Sum(Fields!percent_of_total_waittime.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Subtype>Stacked</Subtype>
@@ -1364,6 +1368,7 @@ ELSE
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Bottleneck_WaitStatsTop5Categories</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Bottleneck Analysis: No data available.", "Column chart of Bottleneck Analysis. X-axis: Wait Category. Y-axis: % Active Thread Time.")</ToolTip>
             <Top>5in</Top>
             <Left>0.25in</Left>
             <Height>4.25in</Height>

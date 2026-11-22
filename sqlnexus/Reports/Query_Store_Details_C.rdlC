@@ -2419,7 +2419,7 @@ ORDER BY RowNumber;</CommandText>
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>="Total_CPU" &amp; ": at time " &amp; CStr(Fields!StartTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!Total_CPU.Value)), 2)) &amp; "."</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Type>Auto</Type>
@@ -2464,6 +2464,7 @@ ORDER BY RowNumber;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>="Total_Duration" &amp; ": at time " &amp; CStr(Fields!StartTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!Total_Duration.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -2499,6 +2500,7 @@ ORDER BY RowNumber;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>="Total_Logical_Reads" &amp; ": at time " &amp; CStr(Fields!StartTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!Total_Logical_Reads.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -2534,6 +2536,7 @@ ORDER BY RowNumber;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>="Total_Logical_Writes" &amp; ": at time " &amp; CStr(Fields!StartTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!Total_Logical_Writes.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -2569,6 +2572,7 @@ ORDER BY RowNumber;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>="Total_Used_Memory" &amp; ": at time " &amp; CStr(Fields!StartTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!Total_Used_Memory.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -2888,6 +2892,7 @@ ORDER BY RowNumber;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_Runtime_Stats</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Performance Over Time: No data available.", "Line chart of Performance Over Time" &amp; IIf(CountDistinct(Fields!StartTime.Value, "DataSet_Runtime_Stats") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!StartTime.Value, "DataSet_Runtime_Stats")), CDate(Max(Fields!StartTime.Value, "DataSet_Runtime_Stats"))) / IIf(CountDistinct(Fields!StartTime.Value, "DataSet_Runtime_Stats") &gt; 1, CountDistinct(Fields!StartTime.Value, "DataSet_Runtime_Stats") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Runtime Intervals. Y-axis: cpu, duration (ms).")</ToolTip>
             <Top>2.2557in</Top>
             <Left>0.13889in</Left>
             <Height>5.03333in</Height>

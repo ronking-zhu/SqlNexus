@@ -385,7 +385,7 @@ END;</CommandText>
                           <FontSize>8pt</FontSize>
                         </Style>
                       </ChartDataLabel>
-                      <ToolTip>#VALY</ToolTip>
+                      <ToolTip>=CStr(Fields!spinlock_name.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Sum(Fields!spin_diff_per_ms_per_cpu.Value)), 2)) &amp; "."</ToolTip>
                       <ActionInfo>
                         <Actions>
                           <Action>
@@ -761,6 +761,7 @@ END;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>sqlnexus</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Top spins (per ms per cpu): No data available.", "Column chart of Top spins (per ms per cpu). X-axis: Spinlock Names. Y-axis: Delta spin per ms per cpu.")</ToolTip>
             <Top>6.86805in</Top>
             <Left>0.12501in</Left>
             <Height>5.59375in</Height>
@@ -1623,6 +1624,7 @@ Parameters!ContrastTheme.Value="None", "Maroon")</Color>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>=CStr(Fields!spinlock_name.Value) &amp; ": value is " &amp; CStr(Round(CDbl(Sum(Fields!spin_diff.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Style />
@@ -1885,6 +1887,7 @@ Parameters!ContrastTheme.Value="None", "Maroon")</Color>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>sqlnexus</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Top Spinlock Categories: No data available.", "Column chart of Top Spinlock Categories. X-axis: Spinlock Name. Y-axis: Delta Spins.")</ToolTip>
             <Top>1.4925in</Top>
             <Left>0.125in</Left>
             <Height>5.43111in</Height>

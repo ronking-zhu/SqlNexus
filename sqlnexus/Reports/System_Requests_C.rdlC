@@ -893,6 +893,7 @@ ORDER BY c.delta_cpu DESC;</CommandText>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
+                      <ToolTip>=CStr(Fields!command.Value) &amp; ": at time " &amp; CStr(Fields!runtime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(Sum(Fields!cpu_percent.Value)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -1212,6 +1213,7 @@ ORDER BY c.delta_cpu DESC;</CommandText>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet_System_Threads_Stats</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "CPU Utilization by Commands (Normalized): No data available.", "Line chart of CPU Utilization by Commands (Normalized)" &amp; IIf(CountDistinct(Fields!runtime.Value, "DataSet_System_Threads_Stats") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!runtime.Value, "DataSet_System_Threads_Stats")), CDate(Max(Fields!runtime.Value, "DataSet_System_Threads_Stats"))) / IIf(CountDistinct(Fields!runtime.Value, "DataSet_System_Threads_Stats") &gt; 1, CountDistinct(Fields!runtime.Value, "DataSet_System_Threads_Stats") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Runtime. Y-axis: CPU % (Normalized by Core Count).")</ToolTip>
             <Top>1.29737in</Top>
             <Left>0.30208in</Left>
             <Height>5.03333in</Height>

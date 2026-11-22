@@ -363,6 +363,7 @@ Parameters!ContrastTheme.Value="None", "#1c3a70")</Color>
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>="Series1" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowStartingEvents.Value, sum(Fields!StartingEvents.Value) * First(Fields!StartingEventsScale.Value, "BATCHAGG_SCALE"),-1)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -406,6 +407,7 @@ Parameters!ContrastTheme.Value="None", "#1c3a70")</Color>
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>="Series2" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowCompletedEvents.Value, sum(Fields!CompletedEvents.Value) * First(Fields!CompletedEventsScale.Value, "BATCHAGG_SCALE"),-1)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -446,6 +448,7 @@ Parameters!ContrastTheme.Value="None", "#1c3a70")</Color>
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>="Series3" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowCPU.Value, sum(Fields!CPU.Value) * First(Fields!CPUScale.Value, "BATCHAGG_SCALE"),-1)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -486,6 +489,7 @@ Parameters!ContrastTheme.Value="None", "#1c3a70")</Color>
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>="Series4" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowReads.Value,sum(Fields!Reads.Value)*First(Fields!ReadsScale.Value, "BATCHAGG_SCALE"),-1)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -525,6 +529,7 @@ Parameters!ContrastTheme.Value="None", "#1c3a70")</Color>
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>="Series5" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowWrites.Value,sum(Fields!Writes.Value)*First(Fields!WritesScale.Value, "BATCHAGG_SCALE"),-1)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -564,6 +569,7 @@ Parameters!ContrastTheme.Value="None", "#1c3a70")</Color>
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>="Series6" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true =Parameters!FShowDuration.Value,sum(Fields!Duration.Value)*First(Fields!DurationScale.Value, "BATCHAGG_SCALE"),-1)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -603,6 +609,7 @@ Parameters!ContrastTheme.Value="None", "#1c3a70")</Color>
                         <Size>6pt</Size>
                         <Style />
                       </ChartMarker>
+                      <ToolTip>="Series7" &amp; ": at time " &amp; CStr(Fields!EndTime.Value) &amp; ", value is " &amp; CStr(Round(CDbl(iif(true = Parameters!FShowAttentions.Value,sum(Fields!Attentions.Value)*First(Fields!AttentionEventsScale.Value, "BATCHAGG_SCALE"),-1)), 2)) &amp; "."</ToolTip>
                     </ChartDataPoint>
                   </ChartDataPoints>
                   <Type>Line</Type>
@@ -930,6 +937,7 @@ Parameters!ContrastTheme.Value="None", "Black")</Color>
               </Style>
             </ChartNoDataMessage>
             <DataSetName>BATCHAGGREGATES_TIMEINTERVAL</DataSetName>
+            <ToolTip>=IIf(CountRows() = 0, "Resource Usage by Time Interval: No data available.", "Line chart of Resource Usage by Time Interval" &amp; IIf(CountDistinct(Fields!EndTime.Value, "BATCHAGGREGATES_TIMEINTERVAL") &gt; 1, ", sampling interval " &amp; CStr(CInt(DateDiff("s", CDate(Min(Fields!EndTime.Value, "BATCHAGGREGATES_TIMEINTERVAL")), CDate(Max(Fields!EndTime.Value, "BATCHAGGREGATES_TIMEINTERVAL"))) / IIf(CountDistinct(Fields!EndTime.Value, "BATCHAGGREGATES_TIMEINTERVAL") &gt; 1, CountDistinct(Fields!EndTime.Value, "BATCHAGGREGATES_TIMEINTERVAL") - 1, 1))) &amp; " seconds", "") &amp; ". X-axis: Completed Time. Y-axis: Value.")</ToolTip>
             <Top>1.90694in</Top>
             <Left>0.275in</Left>
             <Height>5.5in</Height>
